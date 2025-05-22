@@ -51,5 +51,4 @@ public class ORSResponse {
 	public void addResult(String key, Object value) {
 		result.put(key, value);
 	}
-
 }
