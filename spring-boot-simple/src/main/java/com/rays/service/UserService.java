@@ -1,5 +1,7 @@
 package com.rays.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -42,4 +44,38 @@ public class UserService {
 		return dto;
 	}
 
+	@Transactional(readOnly = true)
+	public List search(UserDTO dto, int pageNo, int pageSize) {
+		List list = dao.search(dto, pageNo, pageSize);
+		return list;
+	}
+
+	@Transactional(readOnly = true)
+	public UserDTO findByLogin(String login) {
+		UserDTO dto = dao.findByUniqueKey("loginId", login);
+		return dto;
+	}
+
+	public UserDTO authenticate(String loginId, String password) {
+
+		UserDTO dto = dao.findByUniqueKey("loginId", loginId);
+
+		if (dto != null) {
+			if (dto.getPassword().equals(password)) {
+				return dto;
+			}
+		}
+		return null;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public long save(UserDTO dto) {
+		Long id = dto.getId();
+		if (id != null && id > 0) {
+			update(dto);
+		} else {
+			id = add(dto);
+		}
+		return id;
+	}
 }
