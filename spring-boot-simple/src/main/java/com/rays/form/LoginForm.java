@@ -1,9 +1,13 @@
 package com.rays.form;
 
+import javax.validation.constraints.NotEmpty;
+
 public class LoginForm {
 
+	@NotEmpty(message = "Login Id is required")
 	private String loginId;
 
+	@NotEmpty(message = "Password is required")
 	private String password;
 
 	public String getLoginId() {

@@ -2,30 +2,30 @@ package com.rays.form;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class UserRegistrationForm {
 
-	protected Long id;
-
+	@NotEmpty(message = "First Name is required")
 	private String firstName;
 
+	@NotEmpty(message = "Last Name is required")
 	private String lastName;
 
+	@NotEmpty(message = "Login Id is required")
 	private String loginId;
 
+	@NotEmpty(message = "Password is required")
 	private String password;
 
+	@NotNull(message = "Date of birth is required")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
-	private Long roleId;
-
-	private String roleName;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public UserRegistrationForm() {
 	}
 
 	public String getFirstName() {
@@ -66,21 +66,5 @@ public class UserRegistrationForm {
 
 	public void setDob(Date dob) {
 		this.dob = dob;
-	}
-
-	public Long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
 	}
 }

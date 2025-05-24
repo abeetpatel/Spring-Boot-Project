@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rays.common.BaseCtl;
 import com.rays.common.ORSResponse;
-import com.rays.dto.UserDTO;
-import com.rays.form.UserForm;
-import com.rays.service.UserService;
+import com.rays.dto.RoleDTO;
+import com.rays.form.RoleForm;
+import com.rays.service.RoleService;
 
 @RestController
-@RequestMapping(value = "User")
-public class UserCtl extends BaseCtl {
+@RequestMapping(value = "Role")
+public class RoleCtl extends BaseCtl {
 
 	@Autowired
-	public UserService userService;
+	public RoleService roleService;
 
 	@PostMapping("save")
-	public ORSResponse save(@RequestBody @Valid UserForm form, BindingResult bindingResult) {
+	public ORSResponse save(@RequestBody @Valid RoleForm form, BindingResult bindingResult) {
 
 		ORSResponse res = validate(bindingResult);
 
@@ -35,24 +35,19 @@ public class UserCtl extends BaseCtl {
 			return res;
 		}
 
-		UserDTO dto = new UserDTO();
-
+		RoleDTO dto = new RoleDTO();
 		dto.setId(form.getId());
-		dto.setFirstName(form.getFirstName());
-		dto.setLastName(form.getLastName());
-		dto.setLoginId(form.getLoginId());
-		dto.setPassword(form.getPassword());
-		dto.setDob(form.getDob());
-		dto.setRoleId(form.getRoleId());
+		dto.setName(form.getName());
+		dto.setDescription(form.getDescription());
 
 		if (dto.getId() != null && dto.getId() > 0) {
-			userService.update(dto);
+			roleService.update(dto);
 			res.addData(dto.getId());
-			res.addMessage("User Updated Successfully..!!");
+			res.addMessage("Role Updated Successfully..!!");
 		} else {
-			long pk = userService.add(dto);
+			long pk = roleService.add(dto);
 			res.addData(pk);
-			res.addMessage("User added Successfully..!!");
+			res.addMessage("Role added Successfully..!!");
 		}
 		return res;
 	}
@@ -62,7 +57,7 @@ public class UserCtl extends BaseCtl {
 
 		ORSResponse res = new ORSResponse();
 
-		UserDTO dto = userService.findById(id);
+		RoleDTO dto = roleService.findById(id);
 
 		res.addData(dto);
 
@@ -75,23 +70,23 @@ public class UserCtl extends BaseCtl {
 		ORSResponse res = new ORSResponse();
 
 		for (long id : ids) {
-			userService.delete(id);
+			roleService.delete(id);
 		}
 
-		res.addMessage("User deleted successfully");
+		res.addMessage("Role deleted successfully");
 
 		return res;
 	}
 
 	@PostMapping("search/{pageNo}")
-	public ORSResponse search(@RequestBody UserForm form, @PathVariable int pageNo) {
+	public ORSResponse search(@RequestBody RoleForm form, @PathVariable int pageNo) {
 
 		ORSResponse res = new ORSResponse();
 
-		UserDTO dto = new UserDTO();
-		dto.setFirstName(form.getFirstName());
+		RoleDTO dto = new RoleDTO();
+		dto.setName(form.getName());
 
-		List list = userService.search(dto, pageNo, 5);
+		List list = roleService.search(dto, pageNo, 5);
 
 		if (list.size() == 0) {
 			res.addMessage("Result not found...!!!");

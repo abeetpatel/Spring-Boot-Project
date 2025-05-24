@@ -2,23 +2,32 @@ package com.rays.form;
 
 import java.util.Date;
 
-public class UserForm {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-	protected Long id;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import com.rays.common.BaseForm;
+
+public class UserForm extends BaseForm {
+
+	@NotEmpty(message = "First Name is required")
 	private String firstName;
 
+	@NotEmpty(message = "Last Name is required")
 	private String lastName;
 
+	@NotEmpty(message = "Login Id is required")
 	private String loginId;
 
+	@NotEmpty(message = "Password is required")
 	private String password;
 
+	@NotNull(message = "Date of birth is required")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dob;
 
 	private Long roleId;
-
-	private String roleName;
 
 	public Long getId() {
 		return id;
@@ -74,13 +83,5 @@ public class UserForm {
 
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
-	}
-
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
 	}
 }
