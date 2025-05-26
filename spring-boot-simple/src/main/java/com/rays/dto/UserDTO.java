@@ -41,6 +41,17 @@ public class UserDTO {
 	@Column(name = "ROLE_NAME", length = 50)
 	private String roleName;
 
+	@Column(name = "IMAGE_ID")
+	private Long imageId;
+
+	public Long getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
+	}
+
 	public Long getId() {
 		return id;
 	}
