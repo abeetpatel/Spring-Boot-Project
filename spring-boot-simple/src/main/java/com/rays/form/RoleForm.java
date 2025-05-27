@@ -6,10 +6,10 @@ import com.rays.common.BaseForm;
 
 public class RoleForm extends BaseForm {
 
-	@NotEmpty(message = "Name is required")
+	@NotEmpty(message = "name is required")
 	private String name;
 
-	@NotEmpty(message = "Description is required")
+	@NotEmpty(message = "description is required")
 	private String description;
 
 	public String getName() {
@@ -27,4 +27,5 @@ public class RoleForm extends BaseForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

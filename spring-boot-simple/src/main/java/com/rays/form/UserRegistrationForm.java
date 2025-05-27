@@ -7,18 +7,20 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class UserRegistrationForm {
+import com.rays.common.BaseForm;
 
-	@NotEmpty(message = "First Name is required")
+public class UserRegistrationForm extends BaseForm {
+
+	@NotEmpty(message = "firstName is required")
 	private String firstName;
 
-	@NotEmpty(message = "Last Name is required")
+	@NotEmpty(message = "lastName is required")
 	private String lastName;
 
-	@NotEmpty(message = "Login Id is required")
+	@NotEmpty(message = "loginId is required")
 	private String loginId;
 
-	@NotEmpty(message = "Password is required")
+	@NotEmpty(message = "password is required")
 	private String password;
 
 	@NotNull(message = "Date of birth is required")

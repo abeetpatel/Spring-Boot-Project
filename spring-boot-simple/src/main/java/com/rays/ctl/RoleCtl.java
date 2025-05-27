@@ -1,13 +1,9 @@
 package com.rays.ctl;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,63 +32,16 @@ public class RoleCtl extends BaseCtl {
 		}
 
 		RoleDTO dto = new RoleDTO();
-		dto.setId(form.getId());
 		dto.setName(form.getName());
 		dto.setDescription(form.getDescription());
 
-		if (dto.getId() != null && dto.getId() > 0) {
-			roleService.update(dto);
-			res.addData(dto.getId());
-			res.addMessage("Role Updated Successfully..!!");
-		} else {
-			long pk = roleService.add(dto);
-			res.addData(pk);
-			res.addMessage("Role added Successfully..!!");
-		}
-		return res;
-	}
+		long pk = roleService.add(dto);
 
-	@GetMapping("get/{id}")
-	public ORSResponse get(@PathVariable long id) {
-
-		ORSResponse res = new ORSResponse();
-
-		RoleDTO dto = roleService.findById(id);
-
-		res.addData(dto);
+		res.addData(pk);
+		res.addMessage("Role addedd successfully..!!!");
 
 		return res;
+
 	}
 
-	@GetMapping("delete/{ids}")
-	public ORSResponse delete(@PathVariable long[] ids) {
-
-		ORSResponse res = new ORSResponse();
-
-		for (long id : ids) {
-			roleService.delete(id);
-		}
-
-		res.addMessage("Role deleted successfully");
-
-		return res;
-	}
-
-	@PostMapping("search/{pageNo}")
-	public ORSResponse search(@RequestBody RoleForm form, @PathVariable int pageNo) {
-
-		ORSResponse res = new ORSResponse();
-
-		RoleDTO dto = new RoleDTO();
-		dto.setName(form.getName());
-
-		List list = roleService.search(dto, pageNo, 5);
-
-		if (list.size() == 0) {
-			res.addMessage("Result not found...!!!");
-		} else {
-			res.addData(list);
-		}
-		return res;
-	}
 }

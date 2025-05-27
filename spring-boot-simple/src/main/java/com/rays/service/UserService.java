@@ -17,6 +17,18 @@ public class UserService {
 	@Autowired
 	public UserDAO dao;
 
+	public UserDTO authenticate(String loginId, String password) {
+
+		UserDTO dto = dao.findByUniqueKey("loginId", loginId);
+
+		if (dto != null) {
+			if (dto.getPassword().equals(password)) {
+				return dto;
+			}
+		}
+		return null;
+	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public long add(UserDTO dto) {
 		long pk = dao.add(dto);
@@ -44,6 +56,17 @@ public class UserService {
 		return dto;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	public long save(UserDTO dto) {
+		Long id = dto.getId();
+		if (id != null && id > 0) {
+			update(dto);
+		} else {
+			id = add(dto);
+		}
+		return id;
+	}
+
 	@Transactional(readOnly = true)
 	public List search(UserDTO dto, int pageNo, int pageSize) {
 		List list = dao.search(dto, pageNo, pageSize);
@@ -54,28 +77,5 @@ public class UserService {
 	public UserDTO findByLogin(String login) {
 		UserDTO dto = dao.findByUniqueKey("loginId", login);
 		return dto;
-	}
-
-	public UserDTO authenticate(String loginId, String password) {
-
-		UserDTO dto = dao.findByUniqueKey("loginId", loginId);
-
-		if (dto != null) {
-			if (dto.getPassword().equals(password)) {
-				return dto;
-			}
-		}
-		return null;
-	}
-
-	@Transactional(propagation = Propagation.REQUIRED)
-	public long save(UserDTO dto) {
-		Long id = dto.getId();
-		if (id != null && id > 0) {
-			update(dto);
-		} else {
-			id = add(dto);
-		}
-		return id;
 	}
 }

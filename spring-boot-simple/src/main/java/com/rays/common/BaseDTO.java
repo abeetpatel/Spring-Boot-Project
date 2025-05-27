@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 import org.hibernate.annotations.GenericGenerator;
 
 @MappedSuperclass
-public class BaseDTO {
+public abstract class BaseDTO implements DropDownList {
 
 	@Id
 	@GeneratedValue(generator = "ncsPk")
@@ -22,5 +22,10 @@ public class BaseDTO {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	@Override
+	public String getKey() {
+		return id + "";
 	}
 }

@@ -2,9 +2,11 @@ package com.rays.form;
 
 import javax.validation.constraints.NotEmpty;
 
-public class LoginForm {
+import com.rays.common.BaseForm;
 
-	@NotEmpty(message = "Login Id is required")
+public class LoginForm extends BaseForm {
+
+	@NotEmpty(message = "Login id is required")
 	private String loginId;
 
 	@NotEmpty(message = "Password is required")

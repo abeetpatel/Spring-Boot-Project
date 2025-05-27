@@ -4,21 +4,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.rays.common.BaseDTO;
 
 @Entity
 @Table(name = "ST_USER")
-public class UserDTO {
-
-	@Id
-	@GeneratedValue(generator = "ncsPk")
-	@GenericGenerator(name = "ncsPk", strategy = "native")
-	@Column(name = "ID", unique = true, nullable = false)
-	protected Long id;
+public class UserDTO extends BaseDTO {
 
 	@Column(name = "FIRST_NAME", length = 50)
 	private String firstName;
@@ -43,22 +35,6 @@ public class UserDTO {
 
 	@Column(name = "IMAGE_ID")
 	private Long imageId;
-
-	public Long getImageId() {
-		return imageId;
-	}
-
-	public void setImageId(Long imageId) {
-		this.imageId = imageId;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -114,5 +90,18 @@ public class UserDTO {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public Long getImageId() {
+		return imageId;
+	}
+
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
+	}
+
+	@Override
+	public String getValue() {
+		return firstName;
 	}
 }
