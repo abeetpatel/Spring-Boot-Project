@@ -22,9 +22,6 @@ public class BlogDAO {
 	@PersistenceContext
 	public EntityManager entityManager;
 
-	@Autowired
-	public AttachmentDAO attachmentDao;
-
 	public long add(BlogDTO dto) {
 		entityManager.persist(dto);
 		return dto.getId();

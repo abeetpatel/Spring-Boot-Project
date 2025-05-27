@@ -22,9 +22,6 @@ public class OrderDAO {
 	@PersistenceContext
 	public EntityManager entityManager;
 
-	@Autowired
-	public AttachmentDAO attachmentDao;
-
 	public long add(OrderDTO dto) {
 		entityManager.persist(dto);
 		return dto.getId();

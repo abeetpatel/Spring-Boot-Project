@@ -27,9 +27,6 @@ public class EmployeeCtl extends BaseCtl{
 	@Autowired
 	public EmployeeService employeeService;
 	
-	@Autowired
-	public AttachmentService attachmentService;
-	
 	@PostMapping("save")
 	public ORSResponse save(@RequestBody @Valid EmployeeForm form, BindingResult bindingResult) {
 

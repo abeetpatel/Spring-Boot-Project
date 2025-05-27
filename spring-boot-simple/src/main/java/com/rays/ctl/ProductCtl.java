@@ -27,9 +27,6 @@ public class ProductCtl extends BaseCtl{
 	@Autowired
 	public ProductService productService;
 	
-	@Autowired
-	public AttachmentService attachmentService;
-	
 	@PostMapping("save")
 	public ORSResponse save(@RequestBody @Valid ProductForm form, BindingResult bindingResult) {
 

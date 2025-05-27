@@ -22,9 +22,6 @@ public class TicketDAO {
 	@PersistenceContext
 	public EntityManager entityManager;
 
-	@Autowired
-	public AttachmentDAO attachmentDao;
-
 	public long add(TicketDTO dto) {
 		entityManager.persist(dto);
 		return dto.getId();

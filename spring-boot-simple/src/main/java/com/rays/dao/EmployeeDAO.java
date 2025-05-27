@@ -22,9 +22,6 @@ public class EmployeeDAO {
 	@PersistenceContext
 	public EntityManager entityManager;
 	
-	@Autowired
-	public AttachmentDAO attachmentDao;
-	
 	public long add(EmployeeDTO dto) {
 		entityManager.persist(dto);
 		return dto.getId();

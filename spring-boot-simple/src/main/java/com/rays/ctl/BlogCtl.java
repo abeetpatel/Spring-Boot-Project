@@ -27,9 +27,6 @@ public class BlogCtl extends BaseCtl{
 	@Autowired
 	public BlogService blogService;
 	
-	@Autowired
-	public AttachmentService attachmentService;
-	
 	@PostMapping("save")
 	public ORSResponse save(@RequestBody @Valid BlogForm form, BindingResult bindingResult) {
 

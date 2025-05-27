@@ -27,9 +27,6 @@ public class OrderCtl extends BaseCtl{
 	@Autowired
 	public OrderService orderService;
 	
-	@Autowired
-	public AttachmentService attachmentService;
-	
 	@PostMapping("save")
 	public ORSResponse save(@RequestBody @Valid OrderForm form, BindingResult bindingResult) {
 

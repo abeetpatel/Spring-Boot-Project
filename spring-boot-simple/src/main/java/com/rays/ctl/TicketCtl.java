@@ -27,9 +27,6 @@ public class TicketCtl extends BaseCtl {
 	@Autowired
 	public TicketService ticketService;
 
-	@Autowired
-	public AttachmentService attachmentService;
-
 	@PostMapping("save")
 	public ORSResponse save(@RequestBody @Valid TicketForm form, BindingResult bindingResult) {
 
