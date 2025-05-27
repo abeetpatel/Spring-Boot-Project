@@ -26,6 +26,7 @@ public class UserForm extends BaseForm {
 	@NotNull(message = "Date of birth is required")
 	private Date dob;
 
+	@NotNull(message = "Role id is required")
 	private long roleId;
 
 	public UserForm() {
