@@ -1,6 +1,7 @@
 package com.rays.form;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.rays.common.BaseDTO;
 import com.rays.common.BaseForm;
@@ -14,10 +15,10 @@ public class ProductForm extends BaseForm {
 	@NotEmpty(message = "description is required")
 	private String description;
 
-	@NotEmpty(message = "price is required")
+	@NotNull(message = "price is required")
 	private int price;
 
-	@NotEmpty(message = "quantity is required")
+	@NotNull(message = "quantity is required")
 	private int quantity;
 
 	@NotEmpty(message = "category is required")

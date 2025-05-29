@@ -3,6 +3,7 @@ package com.rays.form;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.rays.common.BaseDTO;
 import com.rays.common.BaseForm;
@@ -19,14 +20,13 @@ public class EmployeeForm extends BaseForm {
 	@NotEmpty(message = "department is required")
 	private String department;
 
-	@NotEmpty(message = "joiningDate is required")
+	@NotNull(message = "joiningDate is required")
 	private Date joiningDate;
 
-	@NotEmpty(message = "salary is required")
+	@NotNull(message = "salary is required")
 	private int salary;
 
 	public EmployeeForm() {
-
 	}
 
 	public String getName() {

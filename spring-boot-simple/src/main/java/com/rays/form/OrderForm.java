@@ -3,6 +3,7 @@ package com.rays.form;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.rays.common.BaseDTO;
 import com.rays.common.BaseForm;
@@ -10,13 +11,13 @@ import com.rays.dto.OrderDTO;
 
 public class OrderForm extends BaseForm {
 
-	@NotEmpty(message = "quantity is required")
+	@NotNull(message = "quantity is required")
 	private int quantity;
 
-	@NotEmpty(message = "totalPrice is required")
+	@NotNull(message = "totalPrice is required")
 	private int totalPrice;
 
-	@NotEmpty(message = "orderDate is required")
+	@NotNull(message = "orderDate is required")
 	private Date orderDate;
 
 	@NotEmpty(message = "status is required")
