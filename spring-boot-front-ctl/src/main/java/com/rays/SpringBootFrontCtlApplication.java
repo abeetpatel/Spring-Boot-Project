@@ -30,7 +30,7 @@ public class SpringBootFrontCtlApplication {
 
 			public void addCorsMappings(CorsRegistry registry) {
 				CorsRegistration cors = registry.addMapping("/**");
-				cors.allowedOrigins("http://localhost:4200");
+				cors.allowedOrigins("http://localhost:8080");
 				cors.allowedHeaders("*");
 				cors.allowCredentials(true);
 			}

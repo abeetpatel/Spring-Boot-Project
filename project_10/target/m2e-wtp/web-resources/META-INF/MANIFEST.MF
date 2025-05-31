@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Built-By: abeet
 Build-Jdk: 11.0.15.1
-Implementation-Title: spring-boot-jwt-token Maven Webapp
+Implementation-Title: project_10 Maven Webapp
 Implementation-Version: 0.0.1-SNAPSHOT
 Implementation-Vendor-Id: com.rays
 Implementation-URL: http://maven.apache.org

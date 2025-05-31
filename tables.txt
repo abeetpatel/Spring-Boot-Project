@@ -1,0 +1,53 @@
+===================================
+ST_USER (User Registration Example)
+===================================
+
+---------------------------------------------------------------------------------------------------------
+| id  | first_name | last_name |    login_id   | password |   dob      | role_id | role_name | image_id |
+---------------------------------------------------------------------------------------------------------
+|  1  |     ABC    |    XYZ    | abc@gmail.com |   123    | 25-01-2024 |    2    |  Student  |   NULL   |
+---------------------------------------------------------------------------------------------------------
+
+- Role ID and Role Name indicate the user's role.
+- Image ID is NULL since no image is attached during registration.
+
+
+==============================
+st_user (After Login Example)
+==============================
+
+---------------------------------------------------------------------------------------------------------
+| id  | first_name | last_name |    login_id   | password |   dob      | role_id | role_name | image_id |
+---------------------------------------------------------------------------------------------------------
+|  1  |     ABC    |    XYZ    | abc@gmail.com |   123    | 25-01-2024 |    1    |   admin   |     1    |
+---------------------------------------------------------------------------------------------------------
+
+- After login, Image ID is assigned if the user uploads an image (e.g., 1 corresponds to an entry in ST_ATTACHMENT).
+
+
+=====================
+st_role (Roles Table)
+=====================
+
+-----------------------------------
+| id  |    name    | description  |
+-----------------------------------
+|  1  |   admin    | administrator|
+|  2  |  student   |    student   |
+-----------------------------------
+
+- The Role ID links to this table in ST_USER, defining the user's role.
+
+
+================================
+st_attachment (User Attachments)
+================================
+
+--------------------------------------------------------------------------------------
+| id  |        name         |      doc     |     type    |   description   | user_id |
+--------------------------------------------------------------------------------------
+|  1  | profile_picture.jpg | [BLOB DATA]  | image/jpeg  | Profile Picture |    1    |
+--------------------------------------------------------------------------------------
+
+- The User ID refers to the ST_USER table, linking this attachment to a specific user.
+- Doc holds the binary data of the file, and Type stores the file’s MIME type.
